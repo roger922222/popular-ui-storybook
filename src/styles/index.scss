@@ -1,0 +1,22 @@
+@import "variables";
+
+@import "reboot";
+
+@import "mixin";
+
+@import "animation";
+
+// button 样式
+@import "../components/Button/style";
+
+// menu 样式
+@import "../components/Menu/style";
+
+// icon 样式
+@import "../components/Icon/style";
+
+// alert 样式
+@import "../components/Alert/style";
+
+// tabs 样式
+@import "../components/Tabs/style";
