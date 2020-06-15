@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ButtonHTMLAttributes, AnchorHTMLAttributes, FC } from 'react'
 import classNames from 'classnames'
 
 export type ButtonSize = 'lg' | 'sm'
@@ -6,9 +6,21 @@ export type ButtonSize = 'lg' | 'sm'
 export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
 interface BaseButtonProps {
+    /*
+    * class值
+    */
     className?: string;
+    /**
+     * 设置Button的禁用
+     */
     disabled?: boolean;
-    size?: ButtonSize;
+    /**
+     *  设置Button的尺寸
+     */
+    size: ButtonSize;
+    /**
+     * 设置Button的类型
+     */
     btnType?: ButtonType;
     children: React.ReactNode; 
     href?: string;
@@ -17,13 +29,20 @@ interface BaseButtonProps {
 
 // 拿到所有button元素的属性 React.ButtonHTMLAttributes<HTMLElement> 不能通过联合类型去组合 |
 
-type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
+type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
 
-type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
 
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps> // Partial a与button标签属性和自定义属性混合在一起，但都是可选的  ？
 
-const Button: React.FC<ButtonProps> = props => {
+/**
+ * 
+ *  ## Button 按钮
+ * ~~~js
+ * import { Button } from 'popular-ui'
+ * ~~~
+ */
+export const Button: FC<ButtonProps> = props => {
     const { 
         btnType,
         disabled,
@@ -65,4 +84,4 @@ Button.defaultProps = {
     btnType: 'default'
 }
 
-export default Button
+export default Button;
